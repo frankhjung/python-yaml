@@ -12,6 +12,8 @@ __pycache__
 *.pyo
 .Python
 README
-results.html
+results/
 *.swp
 target/
+.DS_Store
+
