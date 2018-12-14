@@ -13,7 +13,7 @@ EMPTY:=
 SPACE:= $(EMPTY) $(EMPTY)
 
 COVER_DIR = target/cover
-# srcs used by pychecker
+# srcs used by pyflakes
 SRCS=main.py employees/employees.py test/testemployees.py
 SRCS_LIST=$(subst $(SPACE),$(COMMA),$(SRCS))
 
@@ -33,24 +33,24 @@ help:
 	@echo
 
 check:
-	# check with PyChecker
-	pychecker --only $(SRCS)
-	# check with Pep8
-	pep8 --verbose $(SRCS)
+	# check with pyflakes
+	pyflakes $(SRCS)
+	# check with pycodestyle
+	pycodestyle --verbose $(SRCS)
 	# check distutils
 	python setup.py check
 
 cover:
 	# run main module
-	python-coverage run --include=main.py,employees.employees.py -m main
+	coverage run --include=main.py,employees.employees.py -m main
 	# run main module with verbose and test data
-	python-coverage run --include=main.py,employees.employees.py -a -m main -v test/test.yaml
+	coverage run --include=main.py,employees.employees.py -a -m main -v test/test.yaml
 	# run unit tests (append results)
-	python-coverage run --include=main.py,employees.employees.py -a -m test.testemployees
+	coverage run --include=main.py,employees.employees.py -a -m test.testemployees
 	# annotate file to see what has been tested
-	python-coverage annotate employees/employees.py main.py
+	coverage annotate employees/employees.py main.py
 	# generate unit test coverage report
-	python-coverage report
+	coverage report
 
 run:
 	# run main
@@ -61,7 +61,7 @@ test:
 	# python -m unittest discover -v
 	# list nodetests plugins using nosetests --plugins -vv
 	# run using nosetests for text and html output
-	nosetests --config=test/nosetests.cfg --with-html-output --html-out-file results.html --where $(PWD) --cover-package employees test/test*.py
+	nosetests --config=test/nosetests.cfg --cover-html --cover-html-dir=results --where $(PWD) --cover-package employees test/test*.py
 	# run test class
 	#   python -m test.testemployees -v
 	# test documentation (run coverage first)
@@ -70,7 +70,7 @@ test:
 doc:
 	# creating coverage html report to be included in final documentation
 	$(RM) -rf $(COVER_DIR)
-	python-coverage html -d $(COVER_DIR)
+	coverage html -d $(COVER_DIR)
 	# create sphinx documentation
 	(cd docs; make singlehtml)
 
@@ -84,13 +84,13 @@ dist:
 
 clean:
 	# cleaning workspace
-	python-coverage erase
+	coverage erase
 	# clean build distribution
 	python setup.py clean
 	# clean generated documents
 	(cd docs; make clean)
 	$(RM) -rf cover
-	$(RM) -rf results.html
+	$(RM) -rf results
 	$(RM) -rf target
 	$(RM) -v MANIFEST
 	$(RM) -v .noseids
