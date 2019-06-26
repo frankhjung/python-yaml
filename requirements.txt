@@ -1,9 +1,6 @@
-coverage==4.5.2
-nose==1.3.7
-nosehtmloutput==0.0.5
-pandas==0.23.3+dfsg
-pandocfilters==1.4.2
-pycodestyle==2.4.0
-pyflakes==2.0.0
-pylint==2.2.2
-pyyaml>=4.2b1
+coverage
+flake8
+pyflakes
+pylint
+virtualenv
+yapf

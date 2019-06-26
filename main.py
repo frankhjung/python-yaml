@@ -1,99 +1,78 @@
 #!/usr/bin/env python
 # coding: utf-8
-
 """
 Read Employee data to return turnover information.
 This is a example Python program to read and process YAML files.
 """
-
-from employees.employees import Employees
 
 import argparse
 import logging
 import os.path
 import sys
 
+from employees.employees import Employees
 
-def main(argv=sys.argv):
-
-    """ Test employees class.
-    :param argv:
-    """
+if __name__ == '__main__':
 
     __version__ = Employees.__version__
-
-    parser = argparse.ArgumentParser(
-        prog=os.path.basename(argv[0]),
+    PARSER = argparse.ArgumentParser(
+        prog=os.path.basename(sys.argv[0]),
         usage='%(prog)s [options] infile',
         description='a Python example program to show YAML processing',
         epilog='© 2014-2019 Frank H Jung mailto:frankhjung@linux.com')
-    parser.add_argument(
-        'infile',
-        nargs='?',
-        type=argparse.FileType('r'),
-        default='test/test.yaml',
-        help='alternate YAML file to test')
-    parser.add_argument(
-        '-v',
-        '--verbose',
-        help='verbose output',
-        action='count')
-    parser.add_argument(
-        '--version',
-        action='version',
-        version=__version__)
+    PARSER.add_argument('infile',
+                        nargs='?',
+                        type=argparse.FileType('r'),
+                        default='test/test.yaml',
+                        help='alternate YAML file to test')
+    PARSER.add_argument('-v',
+                        '--verbose',
+                        help='verbose output',
+                        action='count')
+    PARSER.add_argument('--version', action='version', version=__version__)
 
     # process command line arguments
-    args = parser.parse_args()
-    prog = parser.prog
-    infile = args.infile
-    verbose = args.verbose
+    ARGS = PARSER.parse_args()
+    PROG = PARSER.prog
+    INFILE = ARGS.infile
+    VERBOSE = ARGS.verbose
 
     # show command parameters
     logging.basicConfig(format="%(asctime)s %(message)s", level=logging.INFO)
-    logger = logging.getLogger(__name__)
-    if verbose:
-        logger.setLevel(logging.DEBUG)
+    LOGGER = logging.getLogger(__name__)
+    if VERBOSE:
+        LOGGER.setLevel(logging.DEBUG)
 
     # load employees from YAML
-    e = Employees(infile)
+    E = Employees(INFILE)
 
-    logger.debug("infile ......................: {}".format(infile.name))
-    logger.debug("prog ........................: {}".format(prog))
-    logger.debug("verbose .....................: {}".format(verbose))
-    logger.debug("employees ...................:")
-    for n, t in e.employees.items():
-        logger.debug("\t{0}\t{1}".format(n, t))
+    LOGGER.debug("infile ......................: %s", INFILE.name)
+    LOGGER.debug("prog ........................: %s", PROG)
+    LOGGER.debug("verbose .....................: %s", VERBOSE)
+    LOGGER.debug("version .....................: %s", __version__)
+    LOGGER.debug("employees ...................:")
+    for n, t in E.employees.items():
+        LOGGER.debug("\t%s\t%s", n, t)
 
-    t = e.getName(3)
-    logger.debug("name for id 3 ...............: {}".format(t))
+    T = E.get_name(3)
+    LOGGER.debug("name for id 3 ...............: %s", T)
 
-    t = e.getById(3)
-    logger.debug("turnover for 3 ..............: ${:,}".format(t))
+    T = E.get_by_id(3)
+    LOGGER.debug("turnover for 3 ..............: %i", T)
 
-    t = e.getByName('frank')
-    logger.debug("turnover for frank ..........: ${:,}".format(t))
+    T = E.get_by_name('frank')
+    LOGGER.debug("turnover for frank ..........: %i", T)
 
-    t = e.getByYear(2012)
-    logger.debug("turnover for 2012 ...........: ${:,}".format(t))
+    T = E.get_by_year(2012)
+    LOGGER.debug("turnover for 2012 ...........: %i", T)
 
-    t = list(e.listById(3))
-    logger.debug("list turnover by id .........: {}".format(t))
+    T = list(E.list_by_id(3))
+    LOGGER.debug("list turnover by id .........: %s", T)
 
-    t = list(e.listByName('frank'))
-    logger.debug("list turnover by name .......: {}".format(t))
+    T = list(E.list_by_name('frank'))
+    LOGGER.debug("list turnover by name .......: %s", T)
 
-    t = list(e.listByYear(2013))
-    logger.debug("list turnover by year .......: {}".format(t))
+    T = list(E.list_by_year(2013))
+    LOGGER.debug("list turnover by year .......: %s", T)
 
-    return 0
-
-
-#
-# MAIN
-#
-if __name__ == '__main__':
-    rc = main(sys.argv)
-    sys.exit(rc)
-
-# EOF
+    sys.exit(0)
