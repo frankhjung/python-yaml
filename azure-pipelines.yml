@@ -17,9 +17,9 @@ steps:
   - script: |
       sudo apt-get install make python python-dev python-coverage python-pip
       [[ ! -e /usr/bin/coverage ]] && sudo ln -sf /usr/bin/python-coverage /usr/bin/coverage
-      sudo apt-get install python-nose python-nosehtmloutput python-pyflakes python-sphinx python-sphinx-rtd-theme pandoc
+      sudo apt-get install pandoc pycodestyle
       sudo python -m pip install --upgrade pip
-      sudo python -m pip install pycodestyle
+      sudo python -m pip install -r requirements.txt
     displayName: 'Install Project Dependencies'
 
   - script: |

@@ -1,12 +1,15 @@
+.. _index:
+
+Processing YAML with Python(3)
+==============================
+
 .. toctree::
-   :maxdepth: 2
 
    build
+   dependencies
    main
    classes
    unittests
-   coverage
-   dependencies
    references
 
 .. EOF

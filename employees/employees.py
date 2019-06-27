@@ -45,13 +45,13 @@ class Employees():
         """ load yaml data from a file
         :param infile:
         """
-        from yaml import load
         from io import IOBase
+        from yaml import safe_load
         if isinstance(infile, IOBase):
-            self.employees = load(infile)
+            self.employees = safe_load(infile)
         else:
             _fh = open(infile, 'r')
-            self.employees = load(_fh)
+            self.employees = safe_load(_fh)
             _fh.close()
 
     def dump(self):

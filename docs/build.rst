@@ -1,9 +1,13 @@
 .. _build:
 
-How to build the project using make
-===================================
+How to build the project using GNU make
+=======================================
 
-Build everything, including documentation, by running::
+Get help on `GNU Make <http://www.gnu.org/software/make/>`_ options using::
+
+   make help
+
+Build everything, including PyDoc documentation, by running::
 
    make clean all
 

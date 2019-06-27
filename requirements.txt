@@ -2,5 +2,6 @@ coverage
 flake8
 pyflakes
 pylint
+sphinx
 virtualenv
 yapf

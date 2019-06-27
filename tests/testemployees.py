@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
+# pylint: disable=C0111
 # pylint: disable=R0904
 """
-Run unit tests for YAML file processing example, Employees.
+Run unit tests for YAML file processing example.
 """
 
 import os
@@ -26,39 +27,33 @@ class TestEmployees(unittest.TestCase):
         self.assertTrue(os.access(test_file, os.R_OK))
 
     def test_load_by_name(self):
-        """ test load by name """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
 
     def test_load_by_file(self):
-        """ test load by file """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
 
     def test_dump(self):
-        """ test dump of yaml """
         _e = Employees(self.TEST_FILE)
         dump = _e.dump()
-        self.assertEqual(7, len(dump.split('\n')))
+        self.assertEqual(13, len(dump.split('\n')))
         self.assertIn('frank:', dump)
         self.assertIn('jo:', dump)
 
     def test_name(self):
-        """ test name """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertEqual('frank', _e.get_name(3))
         self.assertEqual('jo', _e.get_name(4))
 
     def test_by_name(self):
-        """ test by name """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertEqual(440000, _e.get_by_name('frank'))
         self.assertEqual(560000, _e.get_by_name('jo'))
 
     def test_for_name_by_year(self):
-        """ test for name by year """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertEqual(100000, _e.get_for_name_by_year(name='frank',
@@ -72,7 +67,6 @@ class TestEmployees(unittest.TestCase):
         self.assertEqual(210000, _e.get_for_name_by_year(name='jo', year=2014))
 
     def test_by_year(self):
-        """ test by year """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertEqual(100000, _e.get_by_year(2011))
@@ -81,7 +75,6 @@ class TestEmployees(unittest.TestCase):
         self.assertEqual(210000, _e.get_by_year(2014))
 
     def test_list_by_id(self):
-        """ test list by id """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         turnovers = list(_e.list_by_id(3))
@@ -92,7 +85,6 @@ class TestEmployees(unittest.TestCase):
         self.assertNotIn(220000, turnovers)
 
     def test_list_by_name(self):
-        """ test list by name """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         turnovers = list(_e.list_by_name('frank'))
@@ -103,7 +95,6 @@ class TestEmployees(unittest.TestCase):
         self.assertNotIn(220000, turnovers)
 
     def test_list_by_year(self):
-        """ test list by year """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         turnover = list(_e.list_by_year(2013))
@@ -113,31 +104,26 @@ class TestEmployees(unittest.TestCase):
         self.assertNotIn(2013, turnover)
 
     def test_bad_id(self):
-        """ test bad id """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.get_name(1))
 
     def test_bad_by_id(self):
-        """ test bad by id """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.get_by_id(1))
 
     def test_bad_by_name_(self):
-        """ test bad by name """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.get_by_name('badname'))
 
     def test_bad_by_year(self):
-        """ test bad by year """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertEqual(0, _e.get_by_year(1999))
 
     def test_bad_for_name_by_year(self):
-        """ test bad for name by year """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.get_for_name_by_year('frank', 1999))
@@ -148,25 +134,19 @@ class TestEmployees(unittest.TestCase):
         self.assertIsNone(_e.get_for_name_by_year('badname', 2014))
 
     def test_bad_list_by_id(self):
-        """ test bad list by id """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.list_by_id(1))
 
     def test_bad_list_by_name(self):
-        """ test bad list by name """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.list_by_name('badname'))
 
     def test_bad_list_by_year(self):
-        """ test bad list by year """
         _e = Employees(self.TEST_FILE)
         self.assertIsNotNone(_e)
         self.assertIsNone(_e.list_by_year(1999))
-
-    def tearDown(self):
-        pass
 
 
 #

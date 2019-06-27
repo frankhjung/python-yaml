@@ -9,7 +9,7 @@ setup(
     version=Employees.__version__,
     author='Frank H. Jung',
     author_email='frankhjung@linux.com',
-    packages=['employees', 'test'],
+    packages=['employees', 'tests'],
     url='https://github.com/frankhjung/python-yaml',
     license='LICENSE.txt',
     description='Python example project.',

@@ -10,8 +10,6 @@ pipelines:
           - uname -a
           - apt-get update
           - apt-get --yes install make pandoc
-          - apt-get --yes install python3-coverage python-nose python-nosehtmloutput pyflakes python3-pyflakes python3-sphinx python-sphinx-rtd-theme pycodestyle python3-pycodestyle python3-yaml
-          - ln -sf /usr/bin/python3-coverage /usr/bin/coverage
-          - pip3 install coverage pycodestyle pyflakes Sphinx PyYAML
+          - pip3 install -r requirements.txt
           - pip3 list
-          - make all
+          - make check test run

@@ -23,7 +23,7 @@ if __name__ == '__main__':
     PARSER.add_argument('infile',
                         nargs='?',
                         type=argparse.FileType('r'),
-                        default='test/test.yaml',
+                        default='tests/test.yaml',
                         help='alternate YAML file to test')
     PARSER.add_argument('-v',
                         '--verbose',
@@ -74,5 +74,8 @@ if __name__ == '__main__':
 
     T = list(E.list_by_year(2013))
     LOGGER.debug("list turnover by year .......: %s", T)
+
+    if VERBOSE:
+        print(E.dump())
 
     sys.exit(0)
