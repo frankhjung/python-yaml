@@ -17,6 +17,7 @@ __pycache__
 README
 results/
 results.html
+.spyproject/
 *.swp
 target/
 venv
