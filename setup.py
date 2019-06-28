@@ -13,5 +13,5 @@ setup(
     url='https://github.com/frankhjung/python-yaml',
     license='LICENSE.txt',
     description='Python example project.',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
 )
