@@ -14,21 +14,54 @@ pool:
 
 steps:
 
-  - script: |
-      sudo apt-get install make python python-dev python-coverage python-pip
-      [[ ! -e /usr/bin/coverage ]] && sudo ln -sf /usr/bin/python-coverage /usr/bin/coverage
-      sudo apt-get install pandoc pycodestyle
-      sudo python -m pip install --upgrade pip
-      sudo python -m pip install -r requirements.txt
-    displayName: 'Install Project Dependencies'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7'
+      architecture: 'x64'
 
   - script: |
-      make all
-    displayName: 'Make Project'
+      python -V
+      python -m pip install --upgrade pip
+      pip install virtualenv
+      virtualenv venv
+      source venv/bin/activate
+      pip install -r requirements.txt
+    displayName: dependencies
+
+  - script: |
+      yapf --style google --diff --parallel main.py setup.py employees/employees.py tests/testemployees.py
+      pylint main employees.employees tests.testemployees
+      python setup.py check
+    displayName: check
+
+  - script: |
+      python -m unittest --verbose
+      coverage report employees/employees.py
+    displayName: test
+
+  - script: |
+      python -m unittest --verbose
+    displayName: test
+
+  - script: |
+      python -m main -h
+      python -m main --version
+      python -m main -v tests/test.yaml
+    displayName: run
+
+  - script: |
+      coverage report employees/employees.py
+      coverage html -d cover employees/employees.py
+      (cd docs; make html)
+      mv target/docs/html ./public
+      python setup.py clean
+      python setup.py sdist --dist-dir=target/dist
+      python setup.py build --build-base=target/build
+      mv target/dist/*.tar.gz ./public/
 
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/target/docs/html'
+      rootFolderOrFile: '$(System.DefaultWorkingDirectory)/public'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
@@ -37,5 +70,4 @@ steps:
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber).zip'
-      artifactName: docs
-
+      artifactName: package
