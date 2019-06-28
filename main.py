@@ -29,7 +29,10 @@ if __name__ == '__main__':
                         '--verbose',
                         help='verbose output',
                         action='count')
-    PARSER.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
+    PARSER.add_argument(
+        '--version',
+        action='version',
+        version='%(prog)s {version}'.format(version=__version__))
 
     # process command line arguments
     ARGS = PARSER.parse_args()

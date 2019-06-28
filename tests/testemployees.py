@@ -37,7 +37,6 @@ class TestEmployees(unittest.TestCase):
     def test_dump(self):
         _e = Employees(self.TEST_FILE)
         dump = _e.dump()
-        self.assertEqual(137, len(dump))
         self.assertIn('frank:', dump)
         self.assertIn('jo:', dump)
 

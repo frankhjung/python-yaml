@@ -45,7 +45,7 @@ check:
 	# format code to googles style
 	yapf --style google --parallel -i $(SRCS) setup.py
 	# check with pylint
-	pylint3 $(SRCS) setup.py
+	pylint3 $(SRCS)
 	# check distutils
 	python3 setup.py check
 

@@ -20,27 +20,32 @@ steps:
       architecture: 'x64'
 
   - script: |
+      # requirements
       python --version
       pip --version
       pip install virtualenv
       virtualenv venv
       source venv/bin/activate
       pip install -r requirements.txt
+      # check
       yapf --version
       pylint --version
       yapf --style google --diff --parallel main.py setup.py employees/employees.py tests/testemployees.py
       pylint main employees.employees tests.testemployees
       python setup.py check
+      # test
       python -m unittest --verbose
-      coverage report employees/employees.py
-      python -m unittest --verbose
+      # run
       python -m main -h
       python -m main --version
       python -m main -v tests/test.yaml
+      # coverage
       coverage report employees/employees.py
       coverage html -d cover employees/employees.py
+      # docs
       (cd docs; make html)
       mv target/docs/html ./public
+      # dist
       python setup.py clean
       python setup.py sdist --dist-dir=target/dist
       python setup.py build --build-base=target/build
