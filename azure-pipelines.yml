@@ -20,12 +20,14 @@ steps:
       architecture: 'x64'
 
   - script: |
-      python -V
-      python -m pip install --upgrade pip
+      python --version
+      pip --version
       pip install virtualenv
       virtualenv venv
       source venv/bin/activate
       pip install -r requirements.txt
+      yapf --version
+      pylint --version
     displayName: dependencies
 
   - script: |
