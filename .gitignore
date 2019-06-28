@@ -10,6 +10,7 @@ htmlcov/
 .idea/
 MANIFEST
 .noseids
+public
 *.pyc
 __pycache__
 *.pyo
