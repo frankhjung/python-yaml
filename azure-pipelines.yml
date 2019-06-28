@@ -28,30 +28,15 @@ steps:
       pip install -r requirements.txt
       yapf --version
       pylint --version
-    displayName: dependencies
-
-  - script: |
       yapf --style google --diff --parallel main.py setup.py employees/employees.py tests/testemployees.py
       pylint main employees.employees tests.testemployees
       python setup.py check
-    displayName: check
-
-  - script: |
       python -m unittest --verbose
       coverage report employees/employees.py
-    displayName: test
-
-  - script: |
       python -m unittest --verbose
-    displayName: test
-
-  - script: |
       python -m main -h
       python -m main --version
       python -m main -v tests/test.yaml
-    displayName: run
-
-  - script: |
       coverage report employees/employees.py
       coverage html -d cover employees/employees.py
       (cd docs; make html)
@@ -60,6 +45,7 @@ steps:
       python setup.py sdist --dist-dir=target/dist
       python setup.py build --build-base=target/build
       mv target/dist/*.tar.gz ./public/
+    displayName: build
 
   - task: ArchiveFiles@2
     inputs:
