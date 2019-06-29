@@ -7,8 +7,12 @@
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables
 
 trigger:
-- master
-- test
+  branches:
+    include:
+    - master
+    - feature/*
+    exclude:
+    - test/*
 
 pool:
   vmImage: 'ubuntu-latest'
