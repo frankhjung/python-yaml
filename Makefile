@@ -51,6 +51,8 @@ check:
 
 run:
 	python3 -m main -v tests/test.yaml
+	python3 -m main -h
+	python3 -m main --version
 
 test:
 	# python3 -m unittest --verbose
@@ -68,6 +70,7 @@ dist:
 
 doc:
 	# unit test code coverage
+	coverage3 report employees/employees.py
 	coverage3 html -d cover employees/employees.py
 	# create sphinx documentation
 	(cd docs; make html)

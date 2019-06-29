@@ -1,6 +1,4 @@
-# Processing YAML with Python
+# Example Python 3 Project - Processing YAML
 
-This is an example Python project to demonstrate.
-
-More information [here](./README.rst).
-
+An example [Python 3](https://docs.python.org/3/) project. For more detail see
+package [README](./README.rst).
