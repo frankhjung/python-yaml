@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Employees &#8212; Processing YAML with Python 0.7.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TestEmployees" href="testemployees.html" />
+    <link rel="prev" title="Classes" href="classes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="testemployees.html" title="TestEmployees"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="classes.html" title="Classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Processing YAML with Python 0.7.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="classes.html" accesskey="U">Classes</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="employees">
+<span id="id1"></span><h1>Employees<a class="headerlink" href="#employees" title="Permalink to this headline">¶</a></h1>
+<p>To get help on this module, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pydoc</span> <span class="n">employees</span><span class="o">.</span><span class="n">employees</span>
+</pre></div>
+</div>
+<div class="section" id="module-employees.employees">
+<span id="module"></span><h2>Module<a class="headerlink" href="#module-employees.employees" title="Permalink to this headline">¶</a></h2>
+<p>Read Employee data to return turnover information.
+This is a example Python program to read and process YAML files.</p>
+<dl class="class">
+<dt id="employees.employees.Employees">
+<em class="property">class </em><code class="sig-prename descclassname">employees.employees.</code><code class="sig-name descname">Employees</code><span class="sig-paren">(</span><em class="sig-param">infile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read Employee data to return turnover information.</p>
+<dl class="method">
+<dt id="employees.employees.Employees.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>dump imported yaml</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.filter_by_id">
+<code class="sig-name descname">filter_by_id</code><span class="sig-paren">(</span><em class="sig-param">eid</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.filter_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter by id
+:param eid:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.filter_by_name">
+<code class="sig-name descname">filter_by_name</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.filter_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter by name
+:param name:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.filter_by_year">
+<code class="sig-name descname">filter_by_year</code><span class="sig-paren">(</span><em class="sig-param">year</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.filter_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter by year
+:param year:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.get_by_id">
+<code class="sig-name descname">get_by_id</code><span class="sig-paren">(</span><em class="sig-param">eid</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.get_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns turnover for all years for an employee by id.
+:param eid:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.get_by_name">
+<code class="sig-name descname">get_by_name</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns turnover for all years for an employee by name.
+:param name:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.get_by_year">
+<code class="sig-name descname">get_by_year</code><span class="sig-paren">(</span><em class="sig-param">year</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.get_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns turnover for all employees by year.
+:param year:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.get_for_name_by_year">
+<code class="sig-name descname">get_for_name_by_year</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">year</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.get_for_name_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns turnover for an employee for a specific year.
+:param year:
+:param name:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.get_name">
+<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><em class="sig-param">eid</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns name of employee by id.
+:param eid:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.list_by_id">
+<code class="sig-name descname">list_by_id</code><span class="sig-paren">(</span><em class="sig-param">eid</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.list_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>List turnover by id.
+:param eid:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.list_by_name">
+<code class="sig-name descname">list_by_name</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.list_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>List turnover by name.
+:param name:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.list_by_year">
+<code class="sig-name descname">list_by_year</code><span class="sig-paren">(</span><em class="sig-param">year</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.list_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>List turnover by year.
+:param year:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="employees.employees.Employees.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">infile</em><span class="sig-paren">)</span><a class="headerlink" href="#employees.employees.Employees.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>load yaml data from a file
+:param infile:</p>
+</dd></dl>
+
+</dd></dl>
+
+<p><a class="reference download internal" download="" href="_downloads/1d581650593d6ba6ff7b10d8ed82af72/employees.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span></code></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Employees</a><ul>
+<li><a class="reference internal" href="#module-employees.employees">Module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="classes.html"
+                        title="previous chapter">Classes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="testemployees.html"
+                        title="next chapter">TestEmployees</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/employees.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="testemployees.html" title="TestEmployees"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="classes.html" title="Classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Processing YAML with Python 0.7.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="classes.html" >Classes</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014 2016 2017 Frank H Jung.
+    </div>
+  </body>
+</html>

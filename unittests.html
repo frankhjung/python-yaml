@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Unit Tests &#8212; Processing YAML with Python 0.7.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="TestEmployees" href="testemployees.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="references.html" title="References"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="testemployees.html" title="TestEmployees"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Processing YAML with Python 0.7.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="unit-tests">
+<span id="unittests"></span><h1>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h1>
+<p>Unit tests are performed using <a class="reference external" href="references.html">PyTest</a>.</p>
+<p>Code coverage is reported by <a class="reference external" href="references.html">Coverage</a>.</p>
+<p>Both reports are collated during when <a class="reference external" href="references.html">Sphinx</a> documentation
+is built.</p>
+<div class="section" id="unit-test-results">
+<h2>Unit Test Results<a class="headerlink" href="#unit-test-results" title="Permalink to this headline">¶</a></h2>
+<p>To run the unit tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="n">tests</span><span class="o">/</span><span class="n">test</span><span class="o">*.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>To generate a HTML report with coverage run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">html</span><span class="o">=</span><span class="n">cover</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">html</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">employees</span> <span class="n">tests</span><span class="o">/</span><span class="n">test</span><span class="o">*.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><strong>Report</strong> <a class="reference external" href="_static/report.html">Unit Tests</a></p>
+</div>
+<div class="section" id="unit-test-coverage">
+<h2>Unit Test Coverage<a class="headerlink" href="#unit-test-coverage" title="Permalink to this headline">¶</a></h2>
+<p>To generate a report on test coverage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">helloworld</span> <span class="n">tests</span><span class="o">/</span><span class="n">test</span><span class="o">*.</span><span class="n">py</span>
+<span class="n">coverage</span> <span class="n">html</span> <span class="o">-</span><span class="n">d</span> <span class="n">cover</span> <span class="n">helloworld</span><span class="o">/</span><span class="n">helloworld</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><strong>Report</strong> <a class="reference external" href="_static/index.html">Test Coverage</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Unit Tests</a><ul>
+<li><a class="reference internal" href="#unit-test-results">Unit Test Results</a></li>
+<li><a class="reference internal" href="#unit-test-coverage">Unit Test Coverage</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="testemployees.html"
+                        title="previous chapter">TestEmployees</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="references.html"
+                        title="next chapter">References</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/unittests.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="references.html" title="References"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="testemployees.html" title="TestEmployees"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Processing YAML with Python 0.7.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014 2016 2017 Frank H Jung.
+    </div>
+  </body>
+</html>

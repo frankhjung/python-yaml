@@ -1,0 +1,16 @@
+# list of company employees and their turnovers by year
+
+frank:
+    id: 3
+    turnover:
+        2011: 100000
+        2012: 140000
+        2013: 200000
+
+jo:
+    id: 4
+    turnover:
+        2012: 130000
+        2013: 220000
+        2014: 210000
+...
