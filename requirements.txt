@@ -6,7 +6,7 @@ pytest==5.0.0
 pytest-cov==2.7.1
 pytest-html==1.21.1
 pytest-metadata==1.8.0
-pyyaml==5.1.1
+pyyaml==5.4
 sphinx==2.1.2
 virtualenv==16.6.1
 yapf==0.27.0
