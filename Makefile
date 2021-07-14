@@ -83,6 +83,7 @@ clean:
 	(cd docs; make clean)
 	$(RM) -rf cover
 	$(RM) -rf .coverage
+	$(RM) -f  *.log *.log.*
 	$(RM) -rf __pycache__ employees/__pycache__ tests/__pycache__
 	$(RM) -rf public
 	$(RM) -rf target

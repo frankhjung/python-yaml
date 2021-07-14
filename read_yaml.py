@@ -6,7 +6,7 @@ This is a example Python program to read and process YAML files.
 """
 
 import argparse
-import logging
+import logging.config
 import os.path
 import sys
 
@@ -43,11 +43,14 @@ if __name__ == "__main__":
     verbose = args.verbose
 
     # set logger
-    logging.basicConfig(
-        format="%(asctime)s %(message)s",
-        level=logging.DEBUG if verbose else logging.INFO,
+    logging.config.fileConfig(
+        fname="logger.properties", defaults={"log_file_name": "read_yaml.log"}
     )
     logger = logging.getLogger()
+
+    # log at debug level if verbose flag given
+    if verbose:
+        logger.setLevel(logging.DEBUG)
 
     # show command parameters
     logger.debug("infile ......................: %s", infile.name)
