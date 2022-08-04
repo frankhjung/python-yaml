@@ -57,8 +57,8 @@ def main() -> None:
         logger.debug("path ........................: %s", args.path)
 
     # call helper function to show YAML file contents
-    for _f in args.path:
-        with open(_f, "r", encoding="UTF-8") as infile:
+    for file_path in args.path:
+        with open(file_path, "r", encoding="UTF-8") as infile:
             logger.debug("processing file .............: %s", infile.name)
             assert isinstance(infile, TextIOWrapper)
             show_employees(infile)
