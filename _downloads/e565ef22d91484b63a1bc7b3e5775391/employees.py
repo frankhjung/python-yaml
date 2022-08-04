@@ -78,58 +78,44 @@ class Employees:
         :param eid: the employee id
         """
         turnovers = list(self.filter_by_id(eid))
-        if turnovers:
-            total = sum(turnovers)
-        else:
-            total = None
-        return total
+        return sum(turnovers) if turnovers else None
 
     def get_by_name(self, name):
         """Returns turnover for all years for an employee by name.
         :param name: the employee name
         """
         if name in self.employees.keys():
-            total = sum(self.filter_by_name(name))
+            turnover = sum(self.filter_by_name(name))
         else:
-            total = None
-        return total
+            turnover = None
+        return turnover
 
     def get_by_year(self, year):
         """Returns turnover for all employees by year.
         :param year: year of turnover
         """
-        total = sum(self.filter_by_year(year))
-        return total
+        return sum(self.filter_by_year(year))
 
     def get_for_name_by_year(self, name, year):
         """Returns turnover for an employee for a specific year.
         :param name: name of employee
         :param year: year of turnover
         """
+        turnovers = None
         if name in self.employees.keys():
             turnovers = list(
                 self.employees.get(name).get("turnover").get(_t)
                 for _t in self.employees.get(name).get("turnover")
                 if _t == year
             )
-            if turnovers:
-                total = sum(turnovers)
-            else:
-                total = None
-        else:
-            total = None
-        return total
+        return sum(turnovers) if turnovers else None
 
     def list_by_id(self, eid):
         """List turnover by id.
         :param eid: the employee id
         """
         turnovers = list(self.filter_by_id(eid))
-        if turnovers:
-            pass
-        else:
-            turnovers = None
-        return turnovers
+        return turnovers if turnovers else None
 
     def list_by_name(self, name):
         """List turnover by name.
@@ -146,8 +132,4 @@ class Employees:
         :param year: year of turnover
         """
         turnovers = list(self.filter_by_year(year))
-        if turnovers:
-            pass
-        else:
-            turnovers = None
-        return turnovers
+        return turnovers if turnovers else None
