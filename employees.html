@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Employees &#8212; Processing YAML with Python 1.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -47,13 +49,13 @@
           <div class="body" role="main">
             
   <section id="employees">
-<span id="id1"></span><h1>Employees<a class="headerlink" href="#employees" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Employees<a class="headerlink" href="#employees" title="Permalink to this heading">¶</a></h1>
 <p>To get help on this module, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pydoc</span> <span class="n">employees</span><span class="o">.</span><span class="n">employees</span>
 </pre></div>
 </div>
 <section id="module-employees.employees">
-<span id="module"></span><h2>Module<a class="headerlink" href="#module-employees.employees" title="Permalink to this headline">¶</a></h2>
+<span id="module"></span><h2>Module<a class="headerlink" href="#module-employees.employees" title="Permalink to this heading">¶</a></h2>
 <p>Read Employee data to return turnover information.
 This is a example Python program to read and process YAML files.</p>
 <dl class="py class">
@@ -168,7 +170,25 @@ This is a example Python program to read and process YAML files.</p>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Employees</a><ul>
-<li><a class="reference internal" href="#module-employees.employees">Module</a></li>
+<li><a class="reference internal" href="#module-employees.employees">Module</a><ul>
+<li><a class="reference internal" href="#employees.employees.Employees"><code class="docutils literal notranslate"><span class="pre">Employees</span></code></a><ul>
+<li><a class="reference internal" href="#employees.employees.Employees.dump"><code class="docutils literal notranslate"><span class="pre">Employees.dump()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.filter_by_id"><code class="docutils literal notranslate"><span class="pre">Employees.filter_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.filter_by_name"><code class="docutils literal notranslate"><span class="pre">Employees.filter_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.filter_by_year"><code class="docutils literal notranslate"><span class="pre">Employees.filter_by_year()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.get_by_id"><code class="docutils literal notranslate"><span class="pre">Employees.get_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.get_by_name"><code class="docutils literal notranslate"><span class="pre">Employees.get_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.get_by_year"><code class="docutils literal notranslate"><span class="pre">Employees.get_by_year()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.get_for_name_by_year"><code class="docutils literal notranslate"><span class="pre">Employees.get_for_name_by_year()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.get_name"><code class="docutils literal notranslate"><span class="pre">Employees.get_name()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.list_by_id"><code class="docutils literal notranslate"><span class="pre">Employees.list_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.list_by_name"><code class="docutils literal notranslate"><span class="pre">Employees.list_by_name()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.list_by_year"><code class="docutils literal notranslate"><span class="pre">Employees.list_by_year()</span></code></a></li>
+<li><a class="reference internal" href="#employees.employees.Employees.load"><code class="docutils literal notranslate"><span class="pre">Employees.load()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -200,7 +220,7 @@ This is a example Python program to read and process YAML files.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

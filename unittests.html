@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Unit Tests &#8212; Processing YAML with Python 1.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,7 +13,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -46,13 +48,13 @@
           <div class="body" role="main">
             
   <section id="unit-tests">
-<span id="unittests"></span><h1>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h1>
+<span id="unittests"></span><h1>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this heading">¶</a></h1>
 <p>Unit tests are performed using <a class="reference external" href="references.html">PyTest</a>.</p>
 <p>Code coverage is reported by <a class="reference external" href="references.html">Coverage</a>.</p>
 <p>Both reports are collated during when <a class="reference external" href="references.html">Sphinx</a> documentation
 is built.</p>
 <section id="unit-test-results">
-<h2>Unit Test Results<a class="headerlink" href="#unit-test-results" title="Permalink to this headline">¶</a></h2>
+<h2>Unit Test Results<a class="headerlink" href="#unit-test-results" title="Permalink to this heading">¶</a></h2>
 <p>To run the unit tests:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="n">tests</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">employees</span>
 </pre></div>
@@ -64,7 +66,7 @@ is built.</p>
 <p><strong>Report</strong> <a class="reference external" href="_static/report.html">Unit Tests</a></p>
 </section>
 <section id="unit-test-coverage">
-<h2>Unit Test Coverage<a class="headerlink" href="#unit-test-coverage" title="Permalink to this headline">¶</a></h2>
+<h2>Unit Test Coverage<a class="headerlink" href="#unit-test-coverage" title="Permalink to this heading">¶</a></h2>
 <p>To generate a report on test coverage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">cov</span><span class="o">=</span><span class="n">helloworld</span> <span class="n">tests</span>
 <span class="n">coverage</span> <span class="n">html</span> <span class="o">-</span><span class="n">d</span> <span class="n">cover</span> <span class="n">helloworld</span><span class="o">/</span><span class="n">helloworld</span><span class="o">.</span><span class="n">py</span>
@@ -118,7 +120,7 @@ is built.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

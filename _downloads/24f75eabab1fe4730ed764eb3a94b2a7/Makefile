@@ -9,7 +9,7 @@ EMPTY	:=
 PYTHON	:= $(shell which python3)
 CTAGS	:= $(shell which ctags)
 
-SRCS	:= *.py employees/*.py tests/*.py utils/*.py
+SRCS	:= $(wildcard *.py **/*.py)
 YAMLS	:= $(wildcard .*.yml *.yml .github/**/*.yml tests/*.yaml)
 
 default:	check test version
@@ -77,15 +77,13 @@ version:
 clean:
 	# clean generated files
 	(cd docs; make clean)
-	$(RM) -rf build
-	$(RM) -rf cover
-	$(RM) -rf .coverage
-	$(RM) -rf dist
-	$(RM) -f  *.log *.log.*
-	$(RM) -rf __pycache__ employees/__pycache__ tests/__pycache__
-	$(RM) -rf public
-	$(RM) -f  tags
-	$(RM) -rf target
-	$(RM) -v  MANIFEST
-	$(RM) -v  *.pyc *.pyo *.py,cover
-	$(RM) -v  **/*.pyc **/*.pyo **/*.py,cover
+	$(RM) *.log *.log.* tags MANIFEST
+	$(RM) -r build
+	$(RM) -r cover
+	$(RM) -r .coverage
+	$(RM) -r dist
+	$(RM) -r public
+	$(RM) -r __pycache__ **/__pycache__
+	$(RM) -r target
+	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
+	$(RM) -v *.pyc *.pyo *.py,cover
