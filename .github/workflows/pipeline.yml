@@ -7,8 +7,8 @@ on:                      # yamllint disable rule:truthy
     branches:
       - master
       - 'feature/*'
-  schedule:
-    - cron: '0 0 * * *'  # daily
+  # schedule:
+  #   - cron: '0 0 * * *'  # daily
 
 jobs:
 
