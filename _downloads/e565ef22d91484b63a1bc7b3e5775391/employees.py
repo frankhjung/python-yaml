@@ -5,7 +5,9 @@ Read Employee data to return turnover information.
 This is a example Python program to read and process YAML files.
 """
 
+from collections.abc import Iterable
 from io import IOBase
+from typing import Any, Union
 
 from yaml import dump, safe_load
 
@@ -15,13 +17,13 @@ class Employees:
 
     __version__ = "1.4.0"
 
-    def __init__(self, infile=None):
+    def __init__(self, infile: Union[IOBase, str, None] = None):
         self.__class__ = Employees
-        self.employees = None
+        self.employees: Any = None
         if infile is not None:
             self.load(infile)
 
-    def filter_by_id(self, eid):
+    def filter_by_id(self, eid: int) -> Iterable[int]:
         """Filter by employee id.
         :param eid: filter on this employee id
         """
@@ -30,14 +32,14 @@ class Employees:
                 for _t in self.employees.get(_k).get("turnover"):
                     yield self.employees.get(_k).get("turnover").get(_t)
 
-    def filter_by_name(self, name):
+    def filter_by_name(self, name: str):
         """Filter by employee name.
         :param name: filter on this employee name
         """
         for _t in self.employees.get(name).get("turnover"):
             yield self.employees.get(name).get("turnover").get(_t)
 
-    def filter_by_year(self, year):
+    def filter_by_year(self, year: int):
         """Filter by year of employee turnover.
         :param year: filter on this turnover year
         """
@@ -45,7 +47,7 @@ class Employees:
             if year in self.employees.get(_n).get("turnover"):
                 yield self.employees.get(_n).get("turnover").get(year)
 
-    def load(self, infile):
+    def load(self, infile: Union[IOBase, str]):
         """Load YAML data from a file.
         :param infile: the YAML file to read
         """
@@ -61,7 +63,7 @@ class Employees:
         """
         return dump(self.employees)
 
-    def get_name(self, eid):
+    def get_name(self, eid: int) -> str:
         """Returns the name of employee by id.
         :param eid: the employee id
         """
@@ -73,14 +75,14 @@ class Employees:
         )
         return names[0]
 
-    def get_by_id(self, eid):
+    def get_by_id(self, eid: int) -> Union[int, None]:
         """Returns the turnover for all years for an employee by id.
         :param eid: the employee id
         """
         turnovers = list(self.filter_by_id(eid))
         return sum(turnovers) if turnovers else None
 
-    def get_by_name(self, name):
+    def get_by_name(self, name: str) -> Union[int, None]:
         """Returns turnover for all years for an employee by name.
         :param name: the employee name
         """
@@ -90,13 +92,13 @@ class Employees:
             turnover = None
         return turnover
 
-    def get_by_year(self, year):
+    def get_by_year(self, year: int) -> int:
         """Returns turnover for all employees by year.
         :param year: year of turnover
         """
         return sum(self.filter_by_year(year))
 
-    def get_for_name_by_year(self, name, year):
+    def get_for_name_by_year(self, name: str, year: int) -> Union[int, None]:
         """Returns turnover for an employee for a specific year.
         :param name: name of employee
         :param year: year of turnover
@@ -110,14 +112,14 @@ class Employees:
             )
         return sum(turnovers) if turnovers else None
 
-    def list_by_id(self, eid):
+    def list_by_id(self, eid: int) -> Union[Iterable[int], None]:
         """List turnover by id.
         :param eid: the employee id
         """
         turnovers = list(self.filter_by_id(eid))
         return turnovers if turnovers else None
 
-    def list_by_name(self, name):
+    def list_by_name(self, name: str) -> Union[Iterable[int], None]:
         """List turnover by name.
         :param name: name of employee
         """
@@ -127,7 +129,7 @@ class Employees:
             turnovers = None
         return turnovers
 
-    def list_by_year(self, year):
+    def list_by_year(self, year: int) -> Union[Iterable[int], None]:
         """List turnover by year.
         :param year: year of turnover
         """
