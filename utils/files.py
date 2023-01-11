@@ -8,6 +8,6 @@ import glob
 import os.path
 
 
-def list_yamls(directory):
+def list_yamls(directory: str) -> list[str]:
     """Get YAML file glob from a directory."""
     return glob.glob(os.path.join(directory, "*.yaml"))

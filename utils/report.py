@@ -32,14 +32,17 @@ def show_employees(infile: TextIOWrapper) -> None:
     _t = _e.get_by_year(2012)
     logging.debug("turnover for 2012 ...........: %i", _t)
 
-    _t = list(_e.list_by_id(3))
-    logging.debug("list turnover by id .........: %s", _t)
+    _t = _e.list_by_id(3)
+    if _t is not None:
+        logging.debug("list turnover by id .........: %s", list(_t))
 
-    _t = list(_e.list_by_name("frank"))
-    logging.debug("list turnover by name .......: %s", _t)
+    _t = _e.list_by_name("frank")
+    if _t is not None:
+        logging.debug("list turnover by name .......: %s", list(_t))
 
-    _t = list(_e.list_by_year(2013))
-    logging.debug("list turnover by year .......: %s", _t)
+    _t = _e.list_by_year(2013)
+    if _t is not None:
+        logging.debug("list turnover by year .......: %s", list(_t))
 
 
 def dump_employees(file: str) -> None:

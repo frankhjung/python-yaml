@@ -6,6 +6,7 @@ This is an example Python program to read and process YAML files.
 """
 
 import argparse
+import logging
 import logging.config
 import os.path
 import sys
@@ -44,7 +45,7 @@ def main() -> None:
     logging.config.fileConfig(
         fname="logger.properties", defaults={"log_file_name": "read_yaml.log"}
     )
-    logger = logging.getLogger()
+    logger: logging.Logger = logging.getLogger()
 
     # process command line arguments
     args = parser.parse_args()
