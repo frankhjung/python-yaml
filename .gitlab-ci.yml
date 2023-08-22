@@ -1,7 +1,7 @@
 ---
 
 # https://hub.docker.com/r/library/python/tags/
-image: python:3.10.4-buster
+image: python:3.11
 
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
@@ -38,6 +38,7 @@ build:
   script:
     - echo check ...
     - isort --check --diff read_yaml.py employees/*.py utils/*.py tests/*.py
+    - sort-requirements --check requirements.txt
     - black --check read_yaml.py employees/*.py utils/*.py tests/*.py
     - pylint read_yaml.py employees/*.py utils/*.py tests/*.py
     - yamllint --strict .github/workflows/*.yml .*.yml *.yml tests/*.yaml
