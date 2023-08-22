@@ -49,8 +49,10 @@ endif
 	# sort imports
 	isort $(SRCS)
 	# format code to googles style
-	black -q $(SRCS)
-	# check using flake8
+	black --quiet $(SRCS)
+	# sort requirements
+	sort-requirements requirements.txt
+	# check with flake8
 	flake8 $(SRCS)
 	# check with pylint
 	pylint $(SRCS)
