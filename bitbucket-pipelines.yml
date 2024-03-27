@@ -20,16 +20,8 @@ pipelines:
               - "tests/**"
               - "utils/**"
         script:
-          - uname -a
           - apt-get update && apt-get install -y make python3-yaml
           - pip install -Ur requirements.txt
-          - python --version
-          - pip --version
-          - echo isort $(isort --version-number)
-          - black --version
-          - flake8 --version
-          - pylint --version
-          - yamllint --version
           - make clean all
         artifacts:
           - target/docs/html/**
