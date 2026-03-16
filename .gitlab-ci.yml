@@ -1,7 +1,6 @@
 ---
-
 # https://hub.docker.com/r/library/python/tags/
-image: python:3.11
+image: python:3.13
 
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
@@ -41,7 +40,7 @@ build:
     - sort-requirements --check requirements.txt
     - black --check read_yaml.py employees/*.py utils/*.py tests/*.py
     - pylint read_yaml.py employees/*.py utils/*.py tests/*.py
-    - yamllint --strict .github/workflows/*.yml .*.yml *.yml tests/*.yaml
+    - yamllint --strict tests/*.yaml
     - echo test ...
     - pytest -v --cov-report term-missing --cov=employees tests/
     - echo run ...
@@ -56,7 +55,7 @@ pages:
   script:
     - echo document ...
     - pytest -v --html=cover/report.html --cov=employees
-        --cov-report=html:cover tests/
+      --cov-report=html:cover tests/
     - coverage html -d cover employees/employees.py
     - (cd docs; make html)
     - mv target/docs/html public

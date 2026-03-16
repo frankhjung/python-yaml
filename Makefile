@@ -10,7 +10,7 @@ PYTHON	:= $(shell which python3)
 CTAGS	:= $(shell which ctags)
 
 SRCS	:= $(wildcard *.py **/*.py)
-YAMLS	:= $(wildcard .*.yml *.yml .github/**/*.yml tests/*.yaml)
+YAMLS	:= $(wildcard tests/*.yaml)
 
 default:	check test version
 

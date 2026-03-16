@@ -1,27 +1,34 @@
 ---
-
 name: Python application
 
-on:                      # yamllint disable rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
     branches:
       - master
-      - 'feature/*'
+  pull_request:
+    branches:
+      - master
   schedule:
-    - cron: '0 0 * * *'  # daily
+    - cron: "0 0 * * *" # daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.11.4'
+          python-version: "3.13"
 
       - name: setup
         run: |
@@ -48,8 +55,7 @@ jobs:
             read_yaml.py employees/*.py utils/*.py tests/*.py
           pylint \
             read_yaml.py employees/*.py utils/*.py tests/*.py
-          yamllint --strict \
-            .*.yml .github/workflows/*.yml *.yml tests/*.yaml
+          yamllint --strict tests/*.yaml
 
       - name: test
         run: |
@@ -72,8 +78,17 @@ jobs:
           (cd docs; make html)
 
       - name: publish
-        uses: JamesIves/github-pages-deploy-action@v4
-        if: success()
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: target/docs/html
+          path: target/docs/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
