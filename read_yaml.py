@@ -25,7 +25,7 @@ def main() -> None:
         prog=os.path.basename(sys.argv[0]),
         usage="%(prog)s [options] path",
         description="a Python example program to show YAML processing",
-        epilog="© 2014-2021 Frank H Jung mailto:frankhjung@linux.com",
+        epilog="© 2014-2026 Frank H Jung <frankhjung@linux.com>",
     )
     parser.add_argument(
         "-v", "--verbose", action="store_true", help="show verbose output"

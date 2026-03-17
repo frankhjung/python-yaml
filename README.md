@@ -2,57 +2,65 @@
 
 Simple [Python 3](https://docs.python.org/3/) example project.
 
-## Pip Quick Start
+## uv Quick Start
 
-To get started with this project locally, it is recommended to use a virtual
-environment.
+To get started with this project locally, you can use [uv](https://docs.astral.sh/uv/) to manage dependencies and virtual environments.
 
-1. Create a virtual environment:
+### Install uv
 
-   ```bash
-   python -m virtualenv venv
-   ```
+Install `uv` if you haven't already:
 
-2. Activate the virtual environment:
-   * On Linux/macOS: `source venv/bin/activate`
-   * On Windows: `venv\Scripts\activate`
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-3. Upgrade pip and install the project requirements:
+*(For other installation methods, refer to the [uv documentation](https://docs.astral.sh/uv/getting-started/installation/).)*
 
-   ```bash
-   pip install --upgrade pip
-   pip install -Ur requirements.txt
-   ```
+### Sync the project dependencies
+
+Sync the project dependencies:
+
+```bash
+uv sync
+```
+
+This will automatically create a virtual environment (`.venv`) and install all necessary dependencies defined in [pyproject.toml](pyproject.toml).
+
+### Run commands within the environment
+
+Run commands within the environment using `uv run`:
+
+```bash
+uv run make test
+```
 
 ## Updating Outdated Packages
 
-To check for packages that have newer versions available, run:
+To check for and update packages to their latest compatible versions according to [pyproject.toml](pyproject.toml), run:
 
 ```bash
-pip list --outdated
+uv lock --upgrade
 ```
 
 If you want to update a specific package, use:
 
 ```bash
-pip install --upgrade <package_name>
+uv lock --upgrade-package <package_name>
 ```
 
-*Note: If you upgrade any packages, make sure to also update the version pins in
-`requirements.txt` to keep the project dependencies in sync.*
+After updating the lockfile, sync the environment:
+
+```bash
+uv sync
+```
 
 ## Documentation
 
-* [Package reStructuredText](./README.rst)
-
+* [Package reStructuredText](README.rst)
 * [GitHub Pages](https://frankhjung.github.io/python-yaml/index.html)
-
 * [GitLab pages](https://docs.gitlab.com/ce/user/project/pages/getting_started_part_one.html)
 
 ## Pipelines
 
-* [Bitbucket](https://bitbucket.org/frankhjung/python-yaml/addon/pipelines/home)
-
 * [GitHub](https://frankhjung.github.io/python-yaml/index.html)
-
 * [GitLab](https://gitlab.com/theMarloGroup/training/students/fjung/python-yaml/pipelines)

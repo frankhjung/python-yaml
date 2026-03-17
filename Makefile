@@ -4,88 +4,66 @@
 
 .PHONY: check clean dist doc help run test
 
-COMMA	:= ,
-EMPTY	:=
-PYTHON	:= $(shell which python3)
-CTAGS	:= $(shell which ctags)
+PYTHON   := uv run python
+RUFF     := uv run ruff
+PYLINT   := uv run pylint
+PYTEST   := uv run pytest
+YAMLLINT := uv run yamllint
+CTAGS    := $(shell command -v ctags 2>/dev/null)
 
-SRCS	:= $(wildcard *.py **/*.py)
-YAMLS	:= $(wildcard tests/*.yaml)
+SRCS     := $(shell find . -name "*.py" -not -path "./.venv/*")
+YAMLS    := $(wildcard tests/*.yaml)
 
-default:	check test version
+default:	check test version ## default goal
 
-all:	check test run doc dist
+all:	check test run doc dist ## check cover run test doc dist
 
-help:
-	@echo
+help: ## display this help
 	@echo "Default goal: ${.DEFAULT_GOAL}"
-	@echo "  all:   check cover run test doc dist"
-	@echo "  check: check style and lint code"
-	@echo "  run:   run against test data"
-	@echo "  test:  run unit tests"
-	@echo "  dist:  create a distribution archive"
-	@echo "  doc:   create documentation including test coverage and results"
-	@echo "  clean: delete all generated files"
+	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\nTargets:\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 	@echo
-	@echo "Initialise virtual environment (venv) with:"
+	@echo "To initialize and install dependencies managed by uv:"
 	@echo
-	@echo "pip3 install -U virtualenv; python3 -m virtualenv venv; source venv/bin/activate; pip3 install -Ur requirements.txt"
+	@echo "uv sync"
 	@echo
-	@echo "Start virtual environment (venv) with:"
+	@echo "To run commands in the virtual environment:"
 	@echo
-	@echo "source venv/bin/activate"
-	@echo
-	@echo "Deactivate with:"
-	@echo
-	@echo "deactivate"
+	@echo "uv run <command>"
 	@echo
 	$(PYTHON) -m read_yaml -h
 
-check:
+check: ## check style and lint code
 ifdef CTAGS
 	# ctags for vim
 	ctags --recurse -o tags $(SRCS)
 endif
-	# sort imports
-	isort $(SRCS)
-	# format code to googles style
-	black --quiet $(SRCS)
-	# sort requirements
-	sort-requirements requirements.txt
-	# check with flake8
-	flake8 $(SRCS)
+	# format and check code using ruff
+	$(RUFF) check $(SRCS)
+	$(RUFF) format --check $(SRCS)
 	# check with pylint
-	pylint $(SRCS)
+	$(PYLINT) $(SRCS)
 	# check yaml
-	yamllint --strict $(YAMLS)
+	$(YAMLLINT) --strict $(YAMLS)
 
-test:
-	pytest -v --cov-report term-missing --cov=employees tests/
+test: ## run unit tests
+	$(PYTEST) -v --cov-report term-missing --cov=employees tests/
 
-doc:
+doc: ## create documentation including test coverage and results
 	# create sphinx documentation
-	pytest -v --html=cover/report.html --cov=employees --cov-report=html:cover tests/
-	(cd docs; make html)
+	$(PYTEST) -v --html=cover/report.html --cov=employees --cov-report=html:cover tests/
+	$(MAKE) -C docs html
 
-dist:
+dist: ## create a distribution archive
 	cp -pr target/docs/html public
 
-run:
+run: ## run against test data
 	$(PYTHON) -m read_yaml -v tests
 
-version:
+version: ## display version information
 	$(PYTHON) -m read_yaml --version
 
-clean:
+clean: ## delete all generated files
 	# clean generated files
-	(cd docs; make clean)
-	$(RM) *.log *.log.* tags MANIFEST
-	$(RM) -r build
-	$(RM) -r cover
-	$(RM) -r .coverage
-	$(RM) -r dist
-	$(RM) -r public
-	$(RM) -r __pycache__ **/__pycache__
-	$(RM) -r target
-	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover
-	$(RM) -v *.pyc *.pyo *.py,cover
+	$(MAKE) -C docs clean
+	$(RM) -r tags MANIFEST *.log *.log.* build cover .coverage dist public target __pycache__ **/__pycache__
+	$(RM) -v **/*.pyc **/*.pyo **/*.py,cover *.pyc *.pyo *.py,cover

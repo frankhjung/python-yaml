@@ -1,0 +1,82 @@
+---
+name: python-yaml
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+  schedule:
+    - cron: "0 0 * * *" # daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: setup
+        uses: astral-sh/setup-uv@v5
+
+      - name: install
+        run: |
+          uv sync --all-extras --dev
+          uv run python --version
+          uv --version
+          uv run ruff --version
+          uv run pylint --version
+          uv run yamllint --version
+
+      - name: check
+        run: |
+          uv run ruff check read_yaml.py employees/*.py utils/*.py tests/*.py
+          uv run ruff format --check read_yaml.py employees/*.py utils/*.py tests/*.py
+          uv run pylint \
+            read_yaml.py employees/*.py utils/*.py tests/*.py
+          uv run yamllint --strict tests/*.yaml
+
+      - name: test
+        run: |
+          uv run pytest -v --cov-report term-missing --cov=employees tests/
+
+      - name: run
+        run: |
+          uv run python -m read_yaml -h
+          uv run python -m read_yaml --version
+          uv run python -m read_yaml -v tests/test.yaml
+
+      - name: document
+        run: |
+          uv run pytest -v --html=cover/report.html \
+            --cov=employees --cov-report=html:cover tests/
+          (cd docs; make html)
+
+      - name: publish
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: target/docs/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -15,7 +15,7 @@ from yaml import dump, safe_load
 class Employees:
     """Read Employee data to return turnover information."""
 
-    __version__ = "1.4.0"
+    __version__ = "1.5.0"
 
     def __init__(self, infile: Union[IOBase, str, None] = None):
         self.__class__ = Employees

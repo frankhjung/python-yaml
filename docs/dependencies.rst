@@ -3,19 +3,19 @@
 Dependencies
 ============
 
-The projects dependencies are list in :download:`requirements.txt
-<../requirements.txt>`:
+The projects dependencies are list in :download:`pyproject.toml
+<../pyproject.toml>`:
 
 =============== ===================================
 Name            Description
 =============== ===================================
-black           Python code formatter
+ruff            Python code formatter and linter
 coverage        Unit test code coverage
 pylint          Code linter
 pytest          Unit tests
 pyyaml          YAML parser and emitter for Python
 sphinx          Documentation generator
-virtualenv      Virtual environment
+uv              Virtual environment and package manager
 =============== ===================================
 
 .. EOF

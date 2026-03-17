@@ -2,51 +2,38 @@
 # https://hub.docker.com/r/library/python/tags/
 image: python:3.13
 
-# Change pip's cache directory to be inside the project directory since we can
-# only cache local items.
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  UV_CACHE_DIR: "$CI_PROJECT_DIR/.cache/uv"
 
-# Pip's cache doesn't store the python packages
-# https://pip.pypa.io/en/stable/reference/pip_install/#caching
-#
-# If you want to also cache the installed packages, you have to install
-# them in a virtualenv and cache it as well.
 cache:
   paths:
-    - .cache/pip
-    - venv/
+    - .cache/uv
 
 before_script:
-  - pip install --upgrade pip virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
-  - pip install -Ur requirements.txt
-  - python --version
-  - pip --version
-  - virtualenv --version
-  - echo isort $(isort --version-number)
-  - black --version
-  - flake8 --version
-  - pylint --version
-  - yamllint --version
+  - curl -LsSf https://astral.sh/uv/install.sh | sh
+  - export PATH="$HOME/.local/bin:$PATH"
+  - uv sync --all-extras --dev
+  - uv run python --version
+  - uv --version
+  - uv run ruff --version
+  - uv run pylint --version
+  - uv run yamllint --version
 
 build:
   stage: build
   except: [tags]
   script:
     - echo check ...
-    - isort --check --diff read_yaml.py employees/*.py utils/*.py tests/*.py
-    - sort-requirements --check requirements.txt
-    - black --check read_yaml.py employees/*.py utils/*.py tests/*.py
-    - pylint read_yaml.py employees/*.py utils/*.py tests/*.py
-    - yamllint --strict tests/*.yaml
+    - uv run ruff check read_yaml.py employees/*.py utils/*.py tests/*.py
+    - uv run ruff format --check read_yaml.py employees/*.py utils/*.py tests/*.py
+    - uv run pylint read_yaml.py employees/*.py utils/*.py tests/*.py
+    - uv run yamllint --strict tests/*.yaml
     - echo test ...
-    - pytest -v --cov-report term-missing --cov=employees tests/
+    - uv run pytest -v --cov-report term-missing --cov=employees tests/
     - echo run ...
-    - python -m read_yaml -h
-    - python -m read_yaml --version
-    - python -m read_yaml -v tests/test.yaml
+    - uv run python -m read_yaml -h
+    - uv run python -m read_yaml --version
+    - uv run python -m read_yaml -v tests/test.yaml
 
 pages:
   stage: deploy
@@ -54,10 +41,9 @@ pages:
   except: [tags]
   script:
     - echo document ...
-    - pytest -v --html=cover/report.html --cov=employees
-      --cov-report=html:cover tests/
-    - coverage html -d cover employees/employees.py
-    - (cd docs; make html)
+    - uv run pytest -v --html=cover/report.html --cov=employees --cov-report=html:cover tests/
+    - uv run coverage html -d cover employees/employees.py
+    - cd docs && uv run make html && cd ..
     - mv target/docs/html public
   artifacts:
     paths:
