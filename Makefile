@@ -11,7 +11,13 @@ PYTEST   := uv run pytest
 YAMLLINT := uv run yamllint
 CTAGS    := $(shell command -v ctags 2>/dev/null)
 
-SRCS     := $(shell find . -name "*.py" -not -path "./.venv/*")
+SRCS     := $(shell find . -type f -name "*.py" \
+	-not -path "./.venv/*" \
+	-not -path "./public/*" \
+	-not -path "./target/*" \
+	-not -path "./cover/*" \
+	-not -path "./__pycache__/*" \
+	-not -path "./*/__pycache__/*")
 YAMLS    := $(wildcard tests/*.yaml)
 
 default:	check test version ## default goal

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
 # pylint: disable=C0111
 # pylint: disable=R0904
 # pylint: disable=W0621
@@ -9,11 +7,10 @@ Run unit tests for YAML file processing example.
 
 import os
 from collections.abc import Iterable
-from typing import Union
 
 import pytest
 
-from employees.employees import Employees
+from employees import Employees
 
 
 @pytest.fixture
@@ -74,27 +71,27 @@ def test_by_year(employees: Employees):
 
 
 def test_list_by_id(employees: Employees):
-    temp: Union[Iterable[int], None] = employees.list_by_id(3)
+    temp: Iterable[int] | None = employees.list_by_id(3)
     assert temp is not None
-    turnovers: Iterable[int] = list(temp)
+    turnovers: list[int] = list(temp)
     assert len(turnovers) == 3
     assert turnovers == [100000, 140000, 200000]
     assert 220000 not in turnovers
 
 
 def test_list_by_name(employees: Employees):
-    temp: Union[Iterable[int], None] = employees.list_by_name("frank")
+    temp: Iterable[int] | None = employees.list_by_name("frank")
     assert temp is not None
-    turnovers: Iterable[int] = list(temp)
+    turnovers: list[int] = list(temp)
     assert len(turnovers) == 3
     assert turnovers == [100000, 140000, 200000]
     assert 220000 not in turnovers
 
 
 def test_list_by_year(employees: Employees):
-    temp: Union[Iterable[int], None] = employees.list_by_year(2013)
+    temp: Iterable[int] | None = employees.list_by_year(2013)
     assert temp is not None
-    turnovers: Iterable[int] = list(temp)
+    turnovers: list[int] = list(temp)
     assert len(turnovers) == 2
     assert turnovers == [200000, 220000]
     assert 2013 not in turnovers

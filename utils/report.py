@@ -7,7 +7,7 @@ Log employee YAML data.
 import logging
 from io import TextIOWrapper
 
-from employees.employees import Employees
+from employees import Employees
 
 
 def show_employees(infile: TextIOWrapper) -> None:

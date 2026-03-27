@@ -12,7 +12,7 @@ import os.path
 import sys
 from io import TextIOWrapper
 
-import employees.employees
+from employees import Employees
 import utils.files
 from utils.report import dump_employees, show_employees
 
@@ -20,7 +20,7 @@ from utils.report import dump_employees, show_employees
 def main() -> None:
     """Example of YAML file processing."""
 
-    __version__ = employees.employees.Employees.__version__
+    __version__ = Employees.__version__
     parser = argparse.ArgumentParser(
         prog=os.path.basename(sys.argv[0]),
         usage="%(prog)s [options] path",
