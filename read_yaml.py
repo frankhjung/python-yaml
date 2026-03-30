@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Read Employee data to return turnover information.
 This is an example Python program to read and process YAML files.
@@ -12,8 +11,8 @@ import os.path
 import sys
 from io import TextIOWrapper
 
-from employees import Employees
 import utils.files
+from employees import Employees
 from utils.report import dump_employees, show_employees
 
 
