@@ -68,6 +68,10 @@ run: ## run against test data
 version: ## display version information
 	$(PYTHON) -m read_yaml --version
 
+update: ## update dependencies
+	uv pip list --outdated
+	uv sync --upgrade
+
 clean: ## delete all generated files
 	# clean generated files
 	$(MAKE) -C docs clean
