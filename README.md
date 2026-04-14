@@ -4,7 +4,9 @@ Simple [Python 3](https://docs.python.org/3/) example project.
 
 ## uv Quick Start
 
-To get started with this project locally, you can use [uv](https://docs.astral.sh/uv/) to manage dependencies and virtual environments.
+To get started with this project locally, you can use
+[uv](https://docs.astral.sh/uv/) to manage dependencies and virtual
+environments.
 
 ### Install uv
 
@@ -14,7 +16,8 @@ Install `uv` if you haven't already:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-*(For other installation methods, refer to the [uv documentation](https://docs.astral.sh/uv/getting-started/installation/).)*
+*(For other installation methods, refer to the [uv
+documentation](https://docs.astral.sh/uv/getting-started/installation/).)*
 
 ### Sync the project dependencies
 
@@ -24,7 +27,8 @@ Sync the project dependencies:
 uv sync
 ```
 
-This will automatically create a virtual environment (`.venv`) and install all necessary dependencies defined in [pyproject.toml](pyproject.toml).
+This will automatically create a virtual environment (`.venv`) and install all
+necessary dependencies defined in [pyproject.toml](pyproject.toml).
 
 ### Run commands within the environment
 
@@ -36,7 +40,8 @@ uv run make test
 
 ## Updating Outdated Packages
 
-To check for and update packages to their latest compatible versions according to [pyproject.toml](pyproject.toml), run:
+To check for and update packages to their latest compatible versions according
+to [pyproject.toml](pyproject.toml), run:
 
 ```bash
 uv lock --upgrade
@@ -48,7 +53,7 @@ If you want to update a specific package, use:
 uv lock --upgrade-package <package_name>
 ```
 
-After updating the lockfile, sync the environment:
+After updating the lock file, sync the environment:
 
 ```bash
 uv sync
