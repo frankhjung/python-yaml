@@ -1,6 +1,6 @@
 [project]
 name = "yaml"
-version = "1.5.2"
+version = "1.5.3"
 license = "GPL-3.0-or-later"
 description = "Python example on how to process YAML files"
 readme = "README.md"
