@@ -6,6 +6,7 @@ cover
 .coverage
 dist/
 .DS_Store
+*.html
 htmlcov/
 .idea/
 *.log
@@ -15,14 +16,14 @@ public
 *.pyc
 __pycache__
 *.pyo
+/.pytest_cache/
 .Python
 README
 results/
-*.html
 .spyproject/
 *.swp
 tags
 target/
 venv
 .vscode/
-/.pytest_cache/
+yaml.egg-info/

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Log employee YAML data.
 """
@@ -9,6 +7,8 @@ from io import TextIOWrapper
 
 from employees import Employees
 
+logger = logging.getLogger(__name__)
+
 
 def show_employees(infile: TextIOWrapper) -> None:
     """Show employee data read from YAML file."""
@@ -16,33 +16,33 @@ def show_employees(infile: TextIOWrapper) -> None:
     # load employees from YAML
     _e = Employees(infile)
 
-    logging.debug("employees ...................:")
+    logger.debug("employees ...................:")
     for _n, _t in _e.employees.items():
-        logging.debug("\t%s\t%s", _n, _t)
+        logger.debug("\t%s\t%s", _n, _t)
 
     _t = _e.get_name(3)
-    logging.debug("name for id 3 ...............: %s", _t)
+    logger.debug("name for id 3 ...............: %s", _t)
 
     _t = _e.get_by_id(3)
-    logging.debug("turnover for 3 ..............: %i", _t)
+    logger.debug("turnover for 3 ..............: %i", _t)
 
     _t = _e.get_by_name("frank")
-    logging.debug("turnover for frank ..........: %i", _t)
+    logger.debug("turnover for frank ..........: %i", _t)
 
     _t = _e.get_by_year(2012)
-    logging.debug("turnover for 2012 ...........: %i", _t)
+    logger.debug("turnover for 2012 ...........: %i", _t)
 
     _t = _e.list_by_id(3)
     if _t is not None:
-        logging.debug("list turnover by id .........: %s", list(_t))
+        logger.debug("list turnover by id .........: %s", list(_t))
 
     _t = _e.list_by_name("frank")
     if _t is not None:
-        logging.debug("list turnover by name .......: %s", list(_t))
+        logger.debug("list turnover by name .......: %s", list(_t))
 
     _t = _e.list_by_year(2013)
     if _t is not None:
-        logging.debug("list turnover by year .......: %s", list(_t))
+        logger.debug("list turnover by year .......: %s", list(_t))
 
 
 def dump_employees(file: str) -> None:
@@ -50,6 +50,6 @@ def dump_employees(file: str) -> None:
     @rtype: object
     """
 
-    if logging.getLogger().getEffectiveLevel() == logging.DEBUG:
+    if logger.getEffectiveLevel() == logging.DEBUG:
         print("dumping file contents:")
         print(Employees(file).dump())

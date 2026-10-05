@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=C0103
 """
 Processing YAML with Python Example documentation build configuration file,
