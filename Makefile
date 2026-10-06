@@ -2,13 +2,14 @@
 
 .DEFAULT_GOAL := default
 
-.PHONY: check clean dist doc help run test
+.PHONY: build check clean dist doc format help run test update version
 
 PYTHON   := uv run python
 RUFF     := uv run ruff
 PYLINT   := uv run pylint
 PYTEST   := uv run pytest
 YAMLLINT := uv run yamllint
+TY       := uv run ty
 CTAGS    := $(shell command -v ctags 2>/dev/null)
 
 SRCS     := $(shell find . -type f -name "*.py" \
@@ -38,6 +39,9 @@ help: ## display this help
 	@echo
 	$(PYTHON) -m read_yaml -h
 
+format: ## format code using ruff
+	$(RUFF) format $(SRCS)
+
 check: ## check style and lint code
 ifdef CTAGS
 	# ctags for vim
@@ -46,17 +50,22 @@ endif
 	# format and check code using ruff
 	$(RUFF) check $(SRCS)
 	$(RUFF) format --check $(SRCS)
+	# check static typing
+	$(TY) check
 	# check with pylint
 	$(PYLINT) $(SRCS)
 	# check yaml
 	$(YAMLLINT) --strict $(YAMLS)
 
 test: ## run unit tests
-	$(PYTEST) -v --cov-report term-missing --cov=employees tests/
+	$(PYTEST) -v --cov-report term-missing --cov=employees --cov=utils --cov=read_yaml tests/
+
+build: ## build source distribution and wheel
+	uv build
 
 doc: ## create documentation including test coverage and results
 	# create sphinx documentation
-	$(PYTEST) -v --html=cover/report.html --cov=employees --cov-report=html:cover tests/
+	$(PYTEST) -v --html=cover/report.html --cov=employees --cov-report=html:cover --cov=utils --cov=read_yaml tests/
 	$(MAKE) -C docs html
 
 dist: ## create a distribution archive

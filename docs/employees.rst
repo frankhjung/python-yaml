@@ -3,8 +3,9 @@
 Employees
 =========
 
-.. :py:mod:employees.employees
-   :members:
+The ``employees.employees`` module provides the ``Employees`` class facade for
+backward compatibility with existing callers, delegating domain logic to
+:doc:`domain`.
 
 To get help on this module, run::
 

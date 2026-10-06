@@ -794,8 +794,8 @@ wheels = [
 
 [[package]]
 name = "yaml"
-version = "1.5.3"
-source = { virtual = "." }
+version = "2.0.0"
+source = { editable = "." }
 dependencies = [
     { name = "pyyaml" },
 ]

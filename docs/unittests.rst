@@ -3,23 +3,24 @@
 Unit Tests
 ==========
 
-Unit tests are performed using `PyTest <references.html>`_.
+Unit tests are performed using `PyTest <https://docs.pytest.org/>`_.
 
-Code coverage is reported by `Coverage <references.html>`_.
+Code coverage is reported by `Coverage <https://coverage.readthedocs.io/>`_.
 
-Both reports are collated during when `Sphinx <references.html>`_ documentation
-is built.
+Both reports are collated when the Sphinx documentation is built (see also
+:doc:`references`). For module details, see :doc:`test_employees`.
 
 Unit Test Results
 -----------------
 
 To run the unit tests::
 
-   pytest -v tests --cov=employees
+   uv run pytest -v tests/ --cov=employees --cov=utils --cov=read_yaml
 
-To generate a HTML report with coverage run::
+To generate an HTML report with coverage::
 
-   pytest -v --html=cover/report.html --cov=employees tests
+   uv run pytest -v --html=cover/report.html \
+      --cov=employees --cov=utils --cov=read_yaml tests/
 
 **Report** `Unit Tests <_static/report.html>`_
 
@@ -28,8 +29,9 @@ Unit Test Coverage
 
 To generate a report on test coverage::
 
-   pytest -v --cov=helloworld tests
-   coverage html -d cover helloworld/helloworld.py
+   uv run pytest -v \
+      --cov=employees --cov=utils --cov=read_yaml tests/
+   uv run coverage html -d cover
 
 **Report** `Test Coverage <_static/index.html>`_
 

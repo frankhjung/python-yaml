@@ -9,7 +9,7 @@ Introduction
 
 This is an example project to show how to
 
-1. parse command line arguments   
+1. parse command line arguments
 2. read and process YAML files
 3. log messages
 4. unit test
@@ -24,6 +24,7 @@ Contents
    build
    dependencies
    main
+   domain
    classes
    unittests
    references

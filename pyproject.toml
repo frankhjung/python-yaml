@@ -1,11 +1,22 @@
 [project]
 name = "yaml"
-version = "1.5.3"
+version = "2.0.0"
 license = "GPL-3.0-or-later"
 description = "Python example on how to process YAML files"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = ["pyyaml>=6.0.3"]
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["read_yaml"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["employees*", "utils*"]
 
 [dependency-groups]
 dev = [
@@ -20,4 +31,14 @@ dev = [
     "sphinx>=9.1.0",
     "ty>=0.0.23",
     "yamllint>=1.38.0",
+]
+
+[tool.ruff]
+line-length = 80
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+exclude_also = [
+    'if __name__ == "__main__":',
 ]

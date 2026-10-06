@@ -3,17 +3,22 @@
 Main
 ====
 
-This is application demonstrates the following `Python <references.html>`_
-packages:
+This application demonstrates the following tools and packages (see also
+:doc:`references`):
 
-* build project using `GNU Make <references.html>`_
-* format code using `Black <references.html>`_
-* document using `Sphinx <references.html>`_
-* lint code using `pylint <references.html>`_
-* process a YAML file using `PyYAML <references.html>`_
-* read module help using `PyDoc <references.html>`_
-* report test coverage using `Coverage <references.html>`_
-* unit test using `PyTest <references.html>`_
+* build project using `GNU Make <https://www.gnu.org/software/make/>`_
+* format and lint code using `Ruff <https://docs.astral.sh/ruff/>`_
+* manage dependencies using `uv <https://docs.astral.sh/uv/>`_
+* document using `Sphinx <https://www.sphinx-doc.org/>`_
+* lint code using `PyLint <https://www.pylint.org/>`_ and `yamllint`_
+* process a YAML file using `PyYAML <https://pyyaml.org/>`_
+* read module help using `PyDoc`_
+* report test coverage using `Coverage`_
+* unit test using `PyTest <https://docs.pytest.org/>`_
+
+.. _yamllint: https://yamllint.readthedocs.io/
+.. _PyDoc: https://docs.python.org/3/library/pydoc.html
+.. _Coverage: https://coverage.readthedocs.io/
 
 Get help for this module with::
 
@@ -23,7 +28,8 @@ Get help for this module with::
 
 This provides usage information and command line parameters.
 
-The module exists just to run the :ref:`employees` class from command line.
+The module reads YAML employee data from the command line and outputs
+turnover reports using the domain functions and report utilities.
 
 Module
 ------
@@ -32,5 +38,12 @@ Module
    :members:
 
 :download:`Source <../read_yaml.py>`
+
+Project History & Resources
+---------------------------
+
+* :download:`Architecture Decision Record (REQ-001) <REQ-001-pure-functions.md>`
+* :download:`Glossary <../GLOSSARY.md>`
+* :download:`License <../LICENSE.txt>`
 
 .. EOF

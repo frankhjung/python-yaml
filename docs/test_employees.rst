@@ -1,25 +1,35 @@
 .. _test_employees:
 
-Test Employees
-==============
+Unit Test Modules
+=================
 
-.. :py:mod:tests.testemployees
+This section documents the unit test modules for both the pure functional
+domain (``employees.domain``) and the backward-compatible ``Employees``
+facade.
+
+The unit test execution and coverage reports are available from
+:doc:`unittests`.
+
+Domain Unit Tests
+-----------------
+
+The ``tests.test_domain_employees`` module tests the pure domain functions
+and data structures:
+
+.. automodule:: tests.test_domain_employees
    :members:
 
-This project contains the Employee class and associated unit tests:
+:download:`Domain Tests Source <../tests/test_domain_employees.py>`
 
-The unit tests and test coverage reports are available from :doc:`unittests`.
+Employees Facade Unit Tests
+---------------------------
 
-To get help on this module, run::
-
-   pydoc tests.test_employees
-
-Module
-------
+The ``tests.test_employees`` module tests the ``Employees`` class facade and
+YAML loading:
 
 .. automodule:: tests.test_employees
    :members:
 
-:download:`Source <../tests/test_employees.py>`
+:download:`Facade Tests Source <../tests/test_employees.py>`
 
 .. EOF

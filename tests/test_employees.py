@@ -132,3 +132,23 @@ def test_bad_list_by_name(employees: Employees):
 
 def test_bad_list_by_year(employees: Employees):
     assert not employees.list_by_year(1999)
+
+
+def test_filter_by_id(employees: Employees):
+    assert list(employees.filter_by_id(3)) == [100000, 140000, 200000]
+    assert not list(employees.filter_by_id(999))
+
+
+def test_filter_by_name(employees: Employees):
+    assert list(employees.filter_by_name("frank")) == [100000, 140000, 200000]
+    assert not list(employees.filter_by_name("badname"))
+
+
+def test_filter_by_year(employees: Employees):
+    assert list(employees.filter_by_year(2013)) == [200000, 220000]
+    assert not list(employees.filter_by_year(1999))
+
+
+def test_bad_get_name(employees: Employees):
+    with pytest.raises(IndexError, match="list index out of range"):
+        employees.get_name(999)

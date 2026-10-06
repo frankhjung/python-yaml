@@ -67,5 +67,5 @@ uv sync
 
 ## Pipelines
 
-* [GitHub](https://frankhjung.github.io/python-yaml/index.html)
+* [GitHub](https://github.com/frankhjung/python-yaml/actions)
 * [GitLab](https://gitlab.com/theMarloGroup/training/students/fjung/python-yaml/pipelines)

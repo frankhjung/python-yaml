@@ -46,9 +46,7 @@ def show_employees(infile: TextIOWrapper) -> None:
 
 
 def dump_employees(file: str) -> None:
-    """Dump employee data.
-    @rtype: object
-    """
+    """Dump employee data."""
 
     if logger.getEffectiveLevel() == logging.DEBUG:
         print("dumping file contents:")

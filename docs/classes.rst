@@ -3,7 +3,7 @@
 Classes
 =======
 
-This project contains the following classes:
+This project contains the following class and test module references:
 
 .. toctree::
 
